@@ -6,10 +6,9 @@
     var p = 1;
 }
 
-<h2>Index</h2>
+<h2>STATISTICKI LIST</h2>
 
 <div>
-    <h4>StatistikaViewModel</h4>
     <hr />
     <div class="row">
         <div class="col">
@@ -38,7 +37,7 @@
                             for (int i = 0; i < Model.Top3OdlicnihUcenika.Count; i++)
                             {
                                 <tr class="bg-dark">
-                                    <th scope="row">@p.</th>
+                                    <th scope="row" class="boja">@p.</th>
                                     <th scope="row">@Model.Top3OdlicnihUcenika.ElementAt(i).Ime</th>
                                     <th scope="row">@Model.Top3OdlicnihUcenika.ElementAt(i).Prezime</th>
                                 </tr>
@@ -91,9 +90,9 @@
                             for (int i = 0; i < Model.OdlicnihOdjeljenjes.Count; i++)
                             {
                                 <tr class="bg-dark">
-                                    <th scope="row">@p.</th>
+                                    <th class="boja" scope="row">@p.</th>
                                     <th scope="row">@Model.OdlicnihOdjeljenjes.ElementAt(i).Odjeljenje</th>
-                                    <th scope="row" style="color:darkslategrey">@Model.OdlicnihOdjeljenjes.ElementAt(i).BrojUcenika</th>
+                                    <th scope="row">@Model.OdlicnihOdjeljenjes.ElementAt(i).BrojUcenika</th>
                                 </tr>
                                 p++;
                             }
@@ -148,10 +147,10 @@
                             for (int i = 0; i < Model.Top5Ucenika.Count; i++)
                             {
                                 <tr class="bg-dark">
-                                    <th scope="row">@p.</th>
+                                    <th scope="row" class="boja">@p.</th>
                                     <th scope="row">@Model.Top5Ucenika.ElementAt(i).Ime</th>
                                     <th scope="row">@Model.Top5Ucenika.ElementAt(i).Prezime</th>
-                                    <th scope="row" style="color:darkslategrey">@Model.Top5Ucenika.ElementAt(i).Prosjek</th>
+                                    <th scope="row">@Model.Top5Ucenika.ElementAt(i).Prosjek</th>
                                 </tr>
                                 p++;
                             }
@@ -178,10 +177,10 @@
                             for (int i = 0; i < Model.Top3Nastavnika.Count; i++)
                             {
                                 <tr class="bg-dark">
-                                    <th scope="row">@p.</th>
+                                    <th scope="row" class="boja">@p.</th>
                                     <th scope="row">@Model.Top3Nastavnika.ElementAt(i).Ime</th>
                                     <th scope="row">@Model.Top3Nastavnika.ElementAt(i).Prezime</th>
-                                    <th scope="row" style="color:darkslategrey">@Model.Top3Nastavnika.ElementAt(i).Prosjek</th>
+                                    <th scope="row">@Model.Top3Nastavnika.ElementAt(i).Prosjek</th>
                                 </tr>
                                 p++;
                             }
@@ -206,9 +205,9 @@
                             for (int i = 0; i < Model.Top4Predmeta.Count; i++)
                             {
                                 <tr class="bg-dark">
-                                    <th scope="row">@p.</th>
+                                    <th class="boja" scope="row">@p.</th>
                                     <th scope="row">@Model.Top4Predmeta.ElementAt(i).Naziv</th>
-                                    <th scope="row" style="color:darkslategrey">@Model.Top4Predmeta.ElementAt(i).Prosjek</th>
+                                    <th scope="row">@Model.Top4Predmeta.ElementAt(i).Prosjek</th>
                                 </tr>
                                 p++;
                             }

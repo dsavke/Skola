@@ -10,8 +10,8 @@
 <div>
     <h4>UcenikViewModel</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <div class="col-md-6">
+    <div class="row">
+        <div class="col-6">
             <dt>
                 @Html.DisplayNameFor(model => model.UcenikId)
             </dt>
@@ -60,7 +60,7 @@
                 @Html.DisplayFor(model => model.Adresa)
             </dd>
         </div>
-        <div class="col-md-6">
+        <div class="col-6">
             <dt>
                 @Html.DisplayNameFor(model => model.DatumRodjenja)
             </dt>
@@ -102,10 +102,9 @@
             </dd>
 
         </div>
+    </div>
 
-    </dl>
-
-    <div class="col-md-12">
+    <div class="col-12">
         <p>
             @Html.ActionLink("Create new", "Create", "Ocjena", new { id = Model.UcenikId }, new { })
         </p>

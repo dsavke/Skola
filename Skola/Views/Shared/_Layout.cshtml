@@ -14,13 +14,10 @@
                 <button type="button" class="navbar-toggler bg-dark" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Skola", "Index", "Statistika", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { }, new { @class ="nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { }, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { }, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Ucenik", "Index", "Ucenik", new { }, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Odjeljenje", "Index", "Odjeljenje", new { }, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Statistika", "Index", "Statistika", new { }, new { @class = "nav-link" })</li>
