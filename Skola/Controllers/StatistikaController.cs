@@ -127,6 +127,20 @@ namespace Skola.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Podaci()
+        {
+            using (var context = new SkolaContext()) {
+                var data = context.Uceniks.OrderBy(o => o.Ime).Select(u => new
+                {
+                    Ime = u.Ime,
+                    Prezime = u.Prezime,
+                    BrojUDnevniku = u.BrojUDnevniku
+                });
+                return new JsonResult { Data = data, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+        }
+
         private double vratiProsjkePoNastavniku(List<Ocjene> ocjene)
         {
             if (ocjene.Count == 0) return 0;

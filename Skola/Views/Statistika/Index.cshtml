@@ -226,9 +226,44 @@
                     <input class="btn btn-outline-secondary" type="submit" value="PRETRAZI" />
                 </div>
             </div>
-
         }
     </div>
 
+    <button id="btnKlik">Klik</button>
+    <p id="txtPrikaz"></p>
+
+    @Scripts.Render("~/bundles/jquery")
+
+    <script>
+        (function () {
+
+            let btnKlik = document.getElementById("btnKlik");
+            let txtPrikaz = document.getElementById("txtPrikaz");
+
+            btnKlik.addEventListener("click", () => {
+                $.ajax({
+                        url: '@Url.Action("Podaci")',
+                        type: "GET",
+                    success: function (data) {
+                        txtPrikaz.textContent = data;
+                    }
+                    });
+
+
+               /* $.get("/Statistika/Podaci", function (data, status) {
+                    txtPrikaz.textContent = data;
+                });*/
+            });
+
+            /*$("btnKlik").click(function () {
+                console.log("kliknuo");
+                $.get("/Statistika/Podaci", function (data, status) {
+                    $("txtPrikaz").text(data);
+                });
+            });*/
+        })();
+    </script>
 
 </div>
+
+
