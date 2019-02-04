@@ -1,0 +1,235 @@
+﻿@model Skola.Models.StatistikaViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var p = 1;
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>StatistikaViewModel</h4>
+    <hr />
+    <div class="row">
+        <div class="col">
+
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+                    @Html.DisplayNameFor(model => model.UkupanBrojUcenika)
+                    <span class="badge badge-primary">@Html.DisplayFor(model => model.UkupanBrojUcenika)</span>
+                </li>
+            </ul>
+
+            <div class="mt-3">
+                <h3>TOP 3 Ucenika:</h3>
+                <table class="table mt-3">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Redni broj</th>
+                            <th scope="col">Ime</th>
+                            <th scope="col">Prezime</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{
+                            p = 1;
+                            for (int i = 0; i < Model.Top3OdlicnihUcenika.Count; i++)
+                            {
+                                <tr class="bg-dark">
+                                    <th scope="row">@p.</th>
+                                    <th scope="row">@Model.Top3OdlicnihUcenika.ElementAt(i).Ime</th>
+                                    <th scope="row">@Model.Top3OdlicnihUcenika.ElementAt(i).Prezime</th>
+                                </tr>
+                                p++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-3">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+                        @Html.DisplayNameFor(model => model.BrojOdlicnih)
+                        <span class="badge badge-success">@Html.DisplayFor(model => model.BrojOdlicnih)</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+                        @Html.DisplayNameFor(model => model.BrojVrloDobrih)
+                        <span class="badge badge-secondary">@Html.DisplayFor(model => model.BrojVrloDobrih)</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+                        @Html.DisplayNameFor(model => model.BrojDobrih)
+                        <span class="badge badge-info">@Html.DisplayFor(model => model.BrojDobrih)</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+                        @Html.DisplayNameFor(model => model.BrojDovoljnih)
+                        <span class="badge badge-warning">@Html.DisplayFor(model => model.BrojDovoljnih)</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+                        @Html.DisplayNameFor(model => model.BrojNedovoljnih)
+                        <span class="badge badge-danger">@Html.DisplayFor(model => model.BrojNedovoljnih)</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mt-3">
+                <h3>Broj odlicnih po djeljenjima:</h3>
+                <table class="table mt-3">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Redni broj</th>
+                            <th scope="col">Odjeljenje</th>
+                            <th scope="col">Broj ucenika</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{
+                            p = 1;
+                            for (int i = 0; i < Model.OdlicnihOdjeljenjes.Count; i++)
+                            {
+                                <tr class="bg-dark">
+                                    <th scope="row">@p.</th>
+                                    <th scope="row">@Model.OdlicnihOdjeljenjes.ElementAt(i).Odjeljenje</th>
+                                    <th scope="row" style="color:darkslategrey">@Model.OdlicnihOdjeljenjes.ElementAt(i).BrojUcenika</th>
+                                </tr>
+                                p++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-3">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+                        @Html.DisplayNameFor(model => model.BrojMuskih)
+                        <span class="badge badge-success">@Html.DisplayFor(model => model.BrojMuskih)</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+                        @Html.DisplayNameFor(model => model.BrojZenskih)
+                        <span class="badge badge-danger">@Html.DisplayFor(model => model.BrojZenskih)</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mt-3">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+                        @Html.DisplayNameFor(model => model.NajboljeOdjeljenjePoProsjeku)
+                        <span class="badge badge-primary">@Html.DisplayFor(model => model.NajboljeOdjeljenjePoProsjeku.Naziv)</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+                        @Html.DisplayNameFor(model => model.ProsjekGodinaUcenika)
+                        <span class="badge badge-info">@Html.DisplayFor(model => model.ProsjekGodinaUcenika)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col">
+
+            <div>
+                <h3>Najbolji ucenici TOP(5):</h3>
+                <table class="table mt-3">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Redni broj</th>
+                            <th scope="col">Ime</th>
+                            <th scope="col">Prezime</th>
+                            <th scope="col">Prosjek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            p = 1;
+                            for (int i = 0; i < Model.Top5Ucenika.Count; i++)
+                            {
+                                <tr class="bg-dark">
+                                    <th scope="row">@p.</th>
+                                    <th scope="row">@Model.Top5Ucenika.ElementAt(i).Ime</th>
+                                    <th scope="row">@Model.Top5Ucenika.ElementAt(i).Prezime</th>
+                                    <th scope="row" style="color:darkslategrey">@Model.Top5Ucenika.ElementAt(i).Prosjek</th>
+                                </tr>
+                                p++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-3">
+                <h3>Najbolji Nastavnici TOP(3):</h3>
+                <table class="table mt-3">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Redni broj</th>
+                            <th scope="col">Ime</th>
+                            <th scope="col">Prezime</th>
+                            <th scope="col">Prosjek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            p = 1;
+
+                            for (int i = 0; i < Model.Top3Nastavnika.Count; i++)
+                            {
+                                <tr class="bg-dark">
+                                    <th scope="row">@p.</th>
+                                    <th scope="row">@Model.Top3Nastavnika.ElementAt(i).Ime</th>
+                                    <th scope="row">@Model.Top3Nastavnika.ElementAt(i).Prezime</th>
+                                    <th scope="row" style="color:darkslategrey">@Model.Top3Nastavnika.ElementAt(i).Prosjek</th>
+                                </tr>
+                                p++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-3">
+                <h3>Najbolji Predmeti TOP(4):</h3>
+                <table class="table mt-3">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Redni broj</th>
+                            <th scope="col">Naziv</th>
+                            <th scope="col">Prosjek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            p = 1;
+                            for (int i = 0; i < Model.Top4Predmeta.Count; i++)
+                            {
+                                <tr class="bg-dark">
+                                    <th scope="row">@p.</th>
+                                    <th scope="row">@Model.Top4Predmeta.ElementAt(i).Naziv</th>
+                                    <th scope="row" style="color:darkslategrey">@Model.Top4Predmeta.ElementAt(i).Prosjek</th>
+                                </tr>
+                                p++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="mt-5">
+        @using (Html.BeginForm("Pretraga", "Statistika", FormMethod.Get))
+        {
+            <div class="input-group mb-3">
+                @Html.TextBox("Pretraga", "", new { @class = "form-control col-11", @placeholder = "Ime, prezime, jmbg, broj u dnevniku" })
+                <div class="input-group-append">
+                    <input class="btn btn-outline-secondary" type="submit" value="PRETRAZI" />
+                </div>
+            </div>
+
+        }
+    </div>
+
+
+</div>

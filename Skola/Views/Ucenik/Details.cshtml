@@ -1,0 +1,123 @@
+﻿@model Skola.Models.UcenikViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UcenikViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <div class="col-md-6">
+            <dt>
+                @Html.DisplayNameFor(model => model.UcenikId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UcenikId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Ime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Prezime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Prezime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pol)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pol)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Jmbg)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Jmbg)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Adresa)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Adresa)
+            </dd>
+        </div>
+        <div class="col-md-6">
+            <dt>
+                @Html.DisplayNameFor(model => model.DatumRodjenja)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DatumRodjenja)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ImeRoditelja)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ImeRoditelja)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BrojUDnevniku)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BrojUDnevniku)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Drzavljanstvo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Drzavljanstvo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NazivOdjeljena)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NazivOdjeljena)
+            </dd>
+
+        </div>
+
+    </dl>
+
+    <div class="col-md-12">
+        <p>
+            @Html.ActionLink("Create new", "Create", "Ocjena", new { id = Model.UcenikId }, new { })
+        </p>
+        @Html.Partial("_OcjenaIndex", ViewBag.Ocjene as IEnumerable<Skola.Models.OcjenaViewModel>)
+    </div>
+
+    <div class="col-md-12">
+        <br />
+        <br />
+        <p>
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+
+</div>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Skola.Models.OcjenaViewModel>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Datum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vrijednost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipOcjene)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImeNastavnika)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrezimeNastavnika)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NazivPredmeta)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @Html.HiddenFor(modelItem => item.UcenikId)
+        <td>
+            @Html.DisplayFor(modelItem => item.Datum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vrijednost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipOcjene)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImeNastavnika)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrezimeNastavnika)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazivPredmeta)
+        </td>
+        @Html.HiddenFor(modelItem => item.Predmet)
+
+        @Html.HiddenFor(modelItem => item.Nastavnik)
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Ocjena", new { id = item.OcjenaId }, new { }) |
+            @Html.ActionLink("Details", "Details", "Ocjena", new { id = item.OcjenaId }, new { }) |
+            @Html.ActionLink("Delete", "Delete", "Ocjena", new { id = item.OcjenaId }, new { })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Skola.Models.UcenikViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Jmbg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatumRodjenja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImeRoditelja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrojUDnevniku)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Drzavljanstvo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NazivOdjeljena)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prezime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Jmbg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatumRodjenja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImeRoditelja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrojUDnevniku)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Drzavljanstvo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazivOdjeljena)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.UcenikId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.UcenikId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.UcenikId })
+        </td>
+    </tr>
+}
+
+</table>
