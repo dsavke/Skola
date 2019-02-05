@@ -214,6 +214,7 @@
     <Content Include="DbModels\SkolaContext.edmx.diagram">
       <DependentUpon>SkolaContext.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\App\operacija.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />

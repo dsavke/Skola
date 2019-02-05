@@ -1,8 +1,7 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h2>Racunske operacije</h2>
 
 <address>
     One Microsoft Way<br />
@@ -15,3 +14,25 @@
     <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
 </address>
+
+<div>
+    @using (Html.BeginForm())
+    {
+    <input type="text" id="vrijednost1" />
+    <input type="text" id="vrijednost2" />
+
+    <label>@Html.RadioButton("Operacija", "+", new { @class = "form-group" }) +</label>
+    <label>@Html.RadioButton("Operacija", "-", new { @class = "form-group" }) -</label>
+    <label>@Html.RadioButton("Operacija", "*", new { @class = "form-group" }) *</label>
+    <label>@Html.RadioButton("Operacija", "/", new { @class = "form-group" }) /</label>
+
+    <input type="submit" value="IZRACUNAJ" id="btnIzracunaj" />
+
+    <input type="text" id="rezultat" disabled />
+    }
+
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+
+@section scripts{<script src="~/Scripts/App/operacija.js"></script>}
