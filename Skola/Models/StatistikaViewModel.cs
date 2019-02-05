@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Skola.Models
 {
@@ -20,6 +21,9 @@ namespace Skola.Models
         public OdjeljenjeProsjekViewModel NajboljeOdjeljenjePoProsjeku { get; set; }
         public decimal ProsjekGodinaUcenika { get; set; }
         public string Pretraga { get; set; }
+        public string Pol { get; set; }
+        public int OdjeljenjeID { get; set; }
+        public List<SelectListItem> Odjeljenjes { get; set; }
 
         public List<Top5Ucenika> Top5Ucenika { get; set; }
         public List<Top3Nastavnika> Top3Nastavnika { get; set; }

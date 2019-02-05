@@ -85,6 +85,19 @@ namespace Skola.Controllers
                 }).OrderByDescending(p => p.Prosjek).Take(4).ToList();
 
                 statistika.Pretraga = "";
+                statistika.Pol = "";
+                statistika.OdjeljenjeID = -1;
+
+                statistika.Odjeljenjes = new List<SelectListItem>();
+
+                statistika.Odjeljenjes = context.Odjeljenjes.Select(o => new SelectListItem()
+                {
+                    Value = "" + o.OdjeljenjeId,
+                    Text = o.Naziv
+                }).ToList();
+
+                statistika.Odjeljenjes.Insert(0, new SelectListItem() { Text = "Izaberi odjeljenje", Value = "-1" });
+                
 
                 return View(statistika);
             }
@@ -128,17 +141,43 @@ namespace Skola.Controllers
         }
 
         [HttpGet]
-        public ActionResult Podaci()
+        public ActionResult Podaci(string pretraga, int odjeljenje, string pol)
         {
-            using (var context = new SkolaContext()) {
-                var data = context.Uceniks.OrderBy(o => o.Ime).Select(u => new
+            using (var context = new SkolaContext())
+            {
+                var Ucenici = context.Uceniks.Where(u => (u.OdjeljenjeId == odjeljenje || odjeljenje == -1) &&
+                    (u.Pol == pol || pol == "")).Select(u => new UcenikViewModel()
                 {
+                    UcenikId = u.UcenikID,
                     Ime = u.Ime,
                     Prezime = u.Prezime,
-                    BrojUDnevniku = u.BrojUDnevniku
-                }).ToArray();
-                return new JsonResult { Data = data, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                    Pol = u.Pol,
+                    Jmbg = u.JMBG,
+                    Adresa = u.Adresa,
+                    DatumRodjenja = u.DatumRodjenja,
+                    ImeRoditelja = u.ImeRoditelja,
+                    BrojUDnevniku = u.BrojUDnevniku,
+                    Drzavljanstvo = u.Drzavljanstvo,
+                    Odjeljenje = u.OdjeljenjeId,
+                    NazivOdjeljena = u.Odjeljenje.Naziv
+                }).ToList();
+
+                string[] vrijednost = pretraga.Split(' ');
+
+                if (vrijednost[0] == "") return View(new List<UcenikViewModel>());
+
+                foreach (string value in vrijednost)
+                {
+
+                    Ucenici = Ucenici.ToList().Where(u => u.Ime.Contains(value) ||
+                        u.Prezime.Contains(value) || u.Jmbg.Contains(value) ||
+                        u.BrojUDnevniku.ToString().Contains(value)).ToList();
+                }
+
+                return new JsonResult { Data = Ucenici, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
             }
+
         }
 
         private double vratiProsjkePoNastavniku(List<Ocjene> ocjene)

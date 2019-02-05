@@ -218,19 +218,63 @@
         </div>
     </div>
     <div class="mt-5">
-        @using (Html.BeginForm("Pretraga", "Statistika", FormMethod.Get))
+        @using (Html.BeginForm())
         {
             <div class="input-group mb-3">
-                @Html.TextBox("Pretraga", "", new { @class = "form-control col-11", @placeholder = "Ime, prezime, jmbg, broj u dnevniku" })
+                @Html.TextBox("Pretraga", "", new { @id = "txtPrikaz", @class = "form-control col-11", @placeholder = "Ime, prezime, jmbg, broj u dnevniku" })
                 <div class="input-group-append">
-                    <input class="btn btn-outline-secondary" type="submit" value="PRETRAZI" />
+                    <input class="btn btn-outline-secondary" id="btnKlik" type="submit" value="PRETRAZI" />
                 </div>
             </div>
+            <div class="col mt-4">
+                <div class="row">
+                    @Html.DropDownList("OdjeljenjeId", Model.Odjeljenjes as List<SelectListItem>, new { @id = "odjeljenjeID", @class = "form-control col-6" })
+                    <div class="col-6">
+                            <label>@Html.RadioButton("Pol", "Musko", new {  @class = "form-group"}) Musko</label>
+                            <label>@Html.RadioButton("Pol", "Zensko", new {  @class = "form-group" }) Zensko</label>
+                    </div>
+                </div>
+            </div>
+
         }
     </div>
 
-    <button id="btnKlik">Klik</button>
-    <p id="txtPrikaz"></p>
+    <div class="">
+        <table id="tabelaPrikaz" class="table mt-5">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">UcenikID</th>
+                    <th scope="col">Ime</th>
+                    <th scope="col">Prezime</th>
+                    <th scope="col">
+                        Pol 
+                    </th>
+                    <th scope="col">
+                        Jmbg 
+                    </th>
+                    <th scope="col">
+                        Adresa
+                    </th>
+                    <th scope="col">
+                        Datum rodjenja
+                    </th>
+                    <th scope="col">
+                        Ime roditelja
+                    </th>
+                    <th scope="col">
+                        Broj u dnevniku
+                    </th>
+                    <th scope="col">
+                        Drzavljanstvo
+                    </th>
+                    <th scope="col">Naziv odjeljena </th>
+                </tr>
+            </thead>
+            <tbody id="tabelaBody">
+               
+            </tbody>
+        </table>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
 
@@ -240,30 +284,63 @@
             let btnKlik = document.getElementById("btnKlik");
             let txtPrikaz = document.getElementById("txtPrikaz");
 
-            btnKlik.addEventListener("click", () => {
-                $.ajax({
-                        url: '@Url.Action("Podaci")',
-                        type: "GET",
-                    success: function (Data) {
-                        Data.forEach(ele => {
-                            txtPrikaz.textContent += ele.Ime + " " + ele.Prezime + " " + ele.BrojUDnevniku;
-                        })
-                    }
-                    });
+            btnKlik.addEventListener("click", (event) => {
+                event.preventDefault();
+                var data = {
+                    pretraga: $('#txtPrikaz').val(),
+                    odjeljenje: $("#odjeljenjeID").val(),
+                    pol: $("#Pol:checked").val() == undefined ? "" : $("#Pol:checked").val()
+                };
 
-
-               /* $.get("/Statistika/Podaci", function (data, status) {
-                    txtPrikaz.textContent = data;
-                });*/
-            });
-
-            /*$("btnKlik").click(function () {
-                console.log("kliknuo");
-                $.get("/Statistika/Podaci", function (data, status) {
-                    $("txtPrikaz").text(data);
+                $.get("/Statistika/Podaci", data, function (result, status) {
+                    dodajPodatake(result);
                 });
-            });*/
+
+            });
         })();
+
+        function dodajPodatake(data) {
+            $("#tabelaBody tr").remove(); 
+            data.forEach(ele => {
+                var row = document.createElement("tr");
+                var td1 = document.createElement("th");
+                td1.innerHTML = ele.UcenikId;
+                row.append(td1);
+                var td2 = document.createElement("th");
+                td2.innerHTML = ele.Ime;
+                row.append(td2);
+                var td3 = document.createElement("th");
+                td3.innerHTML = ele.Prezime;
+                row.append(td3);
+                var td4 = document.createElement("th");
+                td4.innerHTML = ele.Pol;
+                row.append(td4);
+                var td5 = document.createElement("th");
+                td5.innerHTML = ele.Jmbg;
+                row.append(td5);
+                var td6 = document.createElement("th");
+                td6.innerHTML = ele.Adresa;
+                row.append(td6);
+                var td7 = document.createElement("th");
+                td7.innerHTML = ele.DatumRodjenja;
+                row.append(td7);
+                var td8 = document.createElement("th");
+                td8.innerHTML = ele.ImeRoditelja;
+                row.append(td8);
+                var td9 = document.createElement("th");
+                td9.innerHTML = ele.BrojUDnevniku;
+                row.append(td9);
+                var td10 = document.createElement("th");
+                td10.innerHTML = ele.Drzavljanstvo;
+                row.append(td10);
+                var td11 = document.createElement("th");
+                td11.innerHTML = ele.NazivOdjeljena;
+                row.append(td11);
+                $("#tabelaPrikaz").append(row);
+            });
+            
+        }
+
     </script>
 
 </div>
