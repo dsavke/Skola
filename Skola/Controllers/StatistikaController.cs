@@ -136,7 +136,7 @@ namespace Skola.Controllers
                     Ime = u.Ime,
                     Prezime = u.Prezime,
                     BrojUDnevniku = u.BrojUDnevniku
-                });
+                }).ToArray();
                 return new JsonResult { Data = data, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }

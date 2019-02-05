@@ -244,8 +244,10 @@
                 $.ajax({
                         url: '@Url.Action("Podaci")',
                         type: "GET",
-                    success: function (data) {
-                        txtPrikaz.textContent = data;
+                    success: function (Data) {
+                        Data.forEach(ele => {
+                            txtPrikaz.textContent += ele.Ime + " " + ele.Prezime + " " + ele.BrojUDnevniku;
+                        })
                     }
                     });
 
