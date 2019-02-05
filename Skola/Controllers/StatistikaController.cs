@@ -103,43 +103,6 @@ namespace Skola.Controllers
             }
         }
 
-        public ActionResult Pretraga(string pretraga)
-        {
-            using (var context = new SkolaContext())
-            {
-
-                var Ucenici = context.Uceniks.Select(u => new UcenikViewModel()
-                {
-                    UcenikId = u.UcenikID,
-                    Ime = u.Ime,
-                    Prezime = u.Prezime,
-                    Pol = u.Pol,
-                    Jmbg = u.JMBG,
-                    Adresa = u.Adresa,
-                    DatumRodjenja = u.DatumRodjenja,
-                    ImeRoditelja = u.ImeRoditelja,
-                    BrojUDnevniku = u.BrojUDnevniku,
-                    Drzavljanstvo = u.Drzavljanstvo,
-                    Odjeljenje = u.OdjeljenjeId,
-                    NazivOdjeljena = u.Odjeljenje.Naziv
-                }).ToList();
-
-                string [] vrijednost = pretraga.Split(' ');
-
-                if (vrijednost[0] == "") return View(new List<UcenikViewModel>());
-
-                foreach (string value in vrijednost)
-                {
-
-                    Ucenici = Ucenici.ToList().Where(u => u.Ime.Contains(value) ||
-                        u.Prezime.Contains(value) || u.Jmbg.Contains(value) ||
-                        u.BrojUDnevniku.ToString().Contains(value)).ToList();
-                }
-
-                return View(Ucenici);
-            }
-        }
-
         [HttpGet]
         public ActionResult Podaci(string pretraga, int odjeljenje, string pol)
         {
@@ -164,7 +127,7 @@ namespace Skola.Controllers
 
                 string[] vrijednost = pretraga.Split(' ');
 
-                if (vrijednost[0] == "") return View(new List<UcenikViewModel>());
+                if (vrijednost[0] == "") return new JsonResult { Data = Ucenici, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
 
                 foreach (string value in vrijednost)
                 {
