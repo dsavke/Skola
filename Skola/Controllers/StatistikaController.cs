@@ -86,16 +86,30 @@ namespace Skola.Controllers
 
                 statistika.Pretraga = "";
 
+                statistika.Pol = "";
+                statistika.OdjeljenjeID = -1;
+
+                statistika.Odjeljenjes = new List<SelectListItem>();
+
+                statistika.Odjeljenjes = context.Odjeljenjes.Select(o => new SelectListItem()
+                {
+                    Value = "" + o.OdjeljenjeId,
+                    Text = o.Naziv
+                }).ToList();
+
+                statistika.Odjeljenjes.Insert(0, new SelectListItem() { Text = "Izaberi odjeljenje", Value = "-1" });
+
                 return View(statistika);
             }
         }
 
-        public ActionResult Pretraga(string pretraga)
+        public ActionResult Pretraga(string pretraga, int odjeljenje, string pol)
         {
             using (var context = new SkolaContext())
             {
 
-                var Ucenici = context.Uceniks.Select(u => new UcenikViewModel()
+                var Ucenici = context.Uceniks.Where(u => (u.OdjeljenjeId == odjeljenje || odjeljenje == -1) &&
+                    (u.Pol == pol || pol == "")).Select(u => new UcenikViewModel()
                 {
                     UcenikId = u.UcenikID,
                     Ime = u.Ime,
@@ -113,7 +127,7 @@ namespace Skola.Controllers
 
                 string [] vrijednost = pretraga.Split(' ');
 
-                if (vrijednost[0] == "") return View(new List<UcenikViewModel>());
+                if (vrijednost[0] == "") return PartialView("_PretragaTabela", Ucenici);
 
                 foreach (string value in vrijednost)
                 {
@@ -123,7 +137,7 @@ namespace Skola.Controllers
                         u.BrojUDnevniku.ToString().Contains(value)).ToList();
                 }
 
-                return View(Ucenici);
+                return PartialView("_PretragaTabela", Ucenici);
             }
         }
 

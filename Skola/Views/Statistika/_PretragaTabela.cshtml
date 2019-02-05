@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Skola.Models.UcenikViewModel>
+
+<table class="table mt-4">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jmbg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatumRodjenja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImeRoditelja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrojUDnevniku)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Drzavljanstvo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NazivOdjeljena)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="bg-dark">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pol)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Jmbg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adresa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatumRodjenja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImeRoditelja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrojUDnevniku)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Drzavljanstvo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NazivOdjeljena)
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

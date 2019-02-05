@@ -218,17 +218,34 @@
         </div>
     </div>
     <div class="mt-5">
-        @using (Html.BeginForm("Pretraga", "Statistika", FormMethod.Get))
+        @using (Html.BeginForm())
         {
             <div class="input-group mb-3">
-                @Html.TextBox("Pretraga", "", new { @class = "form-control col-11", @placeholder = "Ime, prezime, jmbg, broj u dnevniku" })
+                @Html.TextBox("Pretraga", "", new { @id = "txtPrikaz", @class = "form-control col-11", @placeholder = "Ime, prezime, jmbg, broj u dnevniku" })
                 <div class="input-group-append">
-                    <input class="btn btn-outline-secondary" type="submit" value="PRETRAZI" />
+                    <input class="btn btn-outline-secondary" id="btnKlik" type="submit" value="PRETRAZI" />
                 </div>
             </div>
-
+            <div class="col mt-4">
+                <div class="row">
+                    @Html.DropDownList("OdjeljenjeId", Model.Odjeljenjes as List<SelectListItem>, new { @id = "odjeljenjeID", @class = "form-control col-6" })
+                    <div class="col-6">
+                            <label>@Html.RadioButton("Pol", "Musko", new {  @class = "form-group"}) Musko</label>
+                            <label>@Html.RadioButton("Pol", "Zensko", new {  @class = "form-group" }) Zensko</label>
+                    </div>
+                </div>
+            </div>
         }
     </div>
 
+    
+        <div  id="prikaz">
+        </div>
+    
+
+    @Scripts.Render("~/bundles/jquery")
+
+    @section scripts {
+        <script src="~/Scripts/App/pretragaPodaci.js"></script>}
 
 </div>
