@@ -303,6 +303,7 @@
             $("#tabelaBody tr").remove(); 
             data.forEach(ele => {
                 var row = document.createElement("tr");
+                row.classList.add("bg-dark");
                 var td1 = document.createElement("th");
                 td1.innerHTML = ele.UcenikId;
                 row.append(td1);
