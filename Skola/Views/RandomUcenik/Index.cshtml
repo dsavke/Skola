@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Dobrodosli!</h2>
+
+<h3>Ovo je vas danasnji random ucenik!</h3>
+
+<div class="mt-5" id="ucenik">
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/App/vratiRandomUcenika.js"></script>
+}
+

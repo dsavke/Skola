@@ -139,6 +139,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OcjenaController.cs" />
     <Compile Include="Controllers\OdjeljenjeController.cs" />
+    <Compile Include="Controllers\RandomUcenikController.cs" />
     <Compile Include="Controllers\StatistikaController.cs" />
     <Compile Include="Controllers\UcenikController.cs" />
     <Compile Include="DbModels\Drzava.cs">
@@ -200,6 +201,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\profilna.jpg" />
     <Content Include="DbModels\SkolaContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SkolaContext.edmx</DependentUpon>
@@ -221,6 +223,7 @@
       <DependentUpon>SkolaContext.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\App\vratiGradove.js" />
+    <Content Include="Scripts\App\vratiRandomUcenika.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -300,6 +303,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\RandomUcenik\Index.cshtml" />
+    <Content Include="Views\RandomUcenik\_RandomUcenik.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
