@@ -122,8 +122,10 @@ namespace Skola.Controllers
                     BrojUDnevniku = u.BrojUDnevniku,
                     Drzavljanstvo = u.Drzavljanstvo,
                     Odjeljenje = u.OdjeljenjeId,
-                    NazivOdjeljena = u.Odjeljenje.Naziv
-                }).ToList();
+                    NazivOdjeljena = u.Odjeljenje.Naziv,
+                    Grad = u.Grad.Naziv,
+                    Drzava = u.Grad.Drzava.Naziv
+                    }).ToList();
 
                 string[] vrijednost = pretraga.Split(' ');
 

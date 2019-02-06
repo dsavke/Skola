@@ -32,8 +32,11 @@ namespace Skola.Controllers
                     BrojUDnevniku = u.BrojUDnevniku,
                     Drzavljanstvo = u.Drzavljanstvo,
                     Odjeljenje = u.OdjeljenjeId,
-                    NazivOdjeljena = u.Odjeljenje.Naziv
+                    NazivOdjeljena = u.Odjeljenje.Naziv,
+                    Grad = u.Grad.Naziv,
+                    Drzava = u.Grad.Drzava.Naziv
                 }).ToList();
+                
                 return View(ucenici);
             }
             
@@ -56,6 +59,8 @@ namespace Skola.Controllers
                     Text = d.Naziv,
                     Value = "" + d.DrzavaID
                 }).ToList();
+
+                ViewBag.Drzave.Insert(0, new SelectListItem() { Text = "Izaberi drzavu", Value = "-1" });
 
             }
             return View();
@@ -82,7 +87,7 @@ namespace Skola.Controllers
             {
                 context.Uceniks.Add(new Ucenik() { UcenikID = ucenik.UcenikId, Ime = ucenik.Ime, Prezime = ucenik.Prezime, Pol = ucenik.Pol,
                                 JMBG = ucenik.Jmbg, Adresa = ucenik.Adresa, DatumRodjenja = ucenik.DatumRodjenja, ImeRoditelja = ucenik.ImeRoditelja,
-                                BrojUDnevniku = ucenik.BrojUDnevniku, Drzavljanstvo = ucenik.Drzavljanstvo, OdjeljenjeId = ucenik.Odjeljenje });
+                                BrojUDnevniku = ucenik.BrojUDnevniku, Drzavljanstvo = ucenik.Drzavljanstvo, OdjeljenjeId = ucenik.Odjeljenje, GradID = ucenik.GradId});
                 context.SaveChanges();
             }
             return RedirectToAction("Index");
@@ -105,6 +110,14 @@ namespace Skola.Controllers
                     Text = o.Naziv,
                     Value = "" + o.OdjeljenjeId
                 }).ToList();
+
+                ViewBag.Drzave = context.Drzavas.Select(d => new SelectListItem()
+                {
+                    Text = d.Naziv,
+                    Value = "" + d.DrzavaID
+                }).ToList();
+
+                ViewBag.Drzave.Insert(0, new SelectListItem() { Text = "Izaberi drzavu", Value = "-1" });
 
                 return View(ucenikViewModel);
             }
@@ -129,6 +142,7 @@ namespace Skola.Controllers
                 uc.BrojUDnevniku = ucenik.BrojUDnevniku;
                 uc.Drzavljanstvo = ucenik.Drzavljanstvo;
                 uc.OdjeljenjeId = ucenik.Odjeljenje;
+                uc.GradID = ucenik.GradId;
 
                 context.SaveChanges();
             }
@@ -194,7 +208,9 @@ namespace Skola.Controllers
                     BrojUDnevniku = ucenik.BrojUDnevniku,
                     Drzavljanstvo = ucenik.Drzavljanstvo,
                     Odjeljenje = ucenik.OdjeljenjeId,
-                    NazivOdjeljena = ucenik.Odjeljenje.Naziv
+                    NazivOdjeljena = ucenik.Odjeljenje.Naziv,
+                    Grad = ucenik.Grad.Naziv,
+                    Drzava = ucenik.Grad.Drzava.Naziv
                 };
 
                 ucenikViewModel.NazivOdjeljena = ucenik.Odjeljenje.Naziv;

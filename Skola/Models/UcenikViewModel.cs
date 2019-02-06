@@ -23,5 +23,7 @@ namespace Skola.Models
         public int Odjeljenje { get; set; }
         public string NazivOdjeljena { get; set; }
         public int GradId { get; set; }
+        public string Grad { get; set; }
+        public string Drzava { get; set; }
     }
 }

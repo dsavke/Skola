@@ -243,20 +243,16 @@
         <table id="tabelaPrikaz" class="table mt-5">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">UcenikID</th>
                     <th scope="col">Ime</th>
                     <th scope="col">Prezime</th>
                     <th scope="col">
-                        Pol 
+                        Pol
                     </th>
                     <th scope="col">
-                        Jmbg 
+                        Jmbg
                     </th>
                     <th scope="col">
                         Adresa
-                    </th>
-                    <th scope="col">
-                        Datum rodjenja
                     </th>
                     <th scope="col">
                         Ime roditelja
@@ -268,6 +264,8 @@
                         Drzavljanstvo
                     </th>
                     <th scope="col">Naziv odjeljena </th>
+                    <th scope="col">Grad </th>
+                    <th scope="col">Drzava </th>
                 </tr>
             </thead>
             <tbody id="tabelaBody">
@@ -304,9 +302,6 @@
             data.forEach(ele => {
                 var row = document.createElement("tr");
                 row.classList.add("bg-dark");
-                var td1 = document.createElement("th");
-                td1.innerHTML = ele.UcenikId;
-                row.append(td1);
                 var td2 = document.createElement("th");
                 td2.innerHTML = ele.Ime;
                 row.append(td2);
@@ -322,9 +317,6 @@
                 var td6 = document.createElement("th");
                 td6.innerHTML = ele.Adresa;
                 row.append(td6);
-                var td7 = document.createElement("th");
-                td7.innerHTML = ele.DatumRodjenja;
-                row.append(td7);
                 var td8 = document.createElement("th");
                 td8.innerHTML = ele.ImeRoditelja;
                 row.append(td8);
@@ -337,6 +329,12 @@
                 var td11 = document.createElement("th");
                 td11.innerHTML = ele.NazivOdjeljena;
                 row.append(td11);
+                var td12 = document.createElement("th");
+                td12.innerHTML = ele.Grad;
+                row.append(td12);
+                var td13 = document.createElement("th");
+                td13.innerHTML = ele.Drzava;
+                row.append(td13);
                 $("#tabelaPrikaz").append(row);
             });
             
