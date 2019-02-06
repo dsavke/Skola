@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Igra</h2>
+
+<label id="vrijednost" style="display:none">@ViewBag.NasumicanBroj</label>
+
+
+<div>
+    <label>Pokusaji: </label>
+    <label id="txtPokusaji">0</label>
+</div>
+
+<div>
+    <label>Poruka: </label>
+    <label id="txtPoruka"></label>
+</div>
+
+<div class="row">
+
+    @{
+        for (int i = 1; i <= 100; i++)
+        {
+
+            <div class="number col-1 mr-1 mb-1">
+                <label class="vrijednost">@i</label>
+            </div>
+
+            if (i % 10 == 0)
+            {
+                <div class="col-1"></div>
+
+            }
+        }
+    }
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+
+@section scripts{
+    <script src="~/Scripts/App/igra.js"></script>}
