@@ -25,6 +25,8 @@ namespace Skola.DbModels
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Drzava> Drzavas { get; set; }
+        public virtual DbSet<Grad> Grads { get; set; }
         public virtual DbSet<Nastavnik> Nastavniks { get; set; }
         public virtual DbSet<Ocjene> Ocjenes { get; set; }
         public virtual DbSet<Odjeljenje> Odjeljenjes { get; set; }

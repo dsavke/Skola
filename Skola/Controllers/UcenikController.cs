@@ -50,8 +50,29 @@ namespace Skola.Controllers
                     Text = o.Naziv,
                     Value = "" + o.OdjeljenjeId
                 }).ToList();
+
+                ViewBag.Drzave = context.Drzavas.Select(d => new SelectListItem()
+                {
+                    Text = d.Naziv,
+                    Value = "" + d.DrzavaID
+                }).ToList();
+
             }
             return View();
+        }
+
+        public ActionResult VratiGradove(int drzavaID)
+        {
+            using (var context = new SkolaContext())
+            {
+                var rezultat = context.Grads.Where(g => g.DrzavaID == drzavaID).Select(g => new
+                {
+                    g.GradID,
+                    g.Naziv
+                }).ToList();
+
+                return new JsonResult() { Data = rezultat, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
         }
 
         [HttpPost]

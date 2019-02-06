@@ -31,7 +31,9 @@ namespace Skola.DbModels
         public int BrojUDnevniku { get; set; }
         public string Drzavljanstvo { get; set; }
         public int OdjeljenjeId { get; set; }
+        public Nullable<int> GradID { get; set; }
     
+        public virtual Grad Grad { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ocjene> Ocjenes { get; set; }
         public virtual Odjeljenje Odjeljenje { get; set; }

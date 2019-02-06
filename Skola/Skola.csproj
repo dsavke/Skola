@@ -141,6 +141,12 @@
     <Compile Include="Controllers\OdjeljenjeController.cs" />
     <Compile Include="Controllers\StatistikaController.cs" />
     <Compile Include="Controllers\UcenikController.cs" />
+    <Compile Include="DbModels\Drzava.cs">
+      <DependentUpon>SkolaContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\Grad.cs">
+      <DependentUpon>SkolaContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="DbModels\Nastavnik.cs">
       <DependentUpon>SkolaContext.tt</DependentUpon>
     </Compile>
@@ -214,6 +220,7 @@
     <Content Include="DbModels\SkolaContext.edmx.diagram">
       <DependentUpon>SkolaContext.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\App\vratiGradove.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
