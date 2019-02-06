@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<label>Vrijednost</label>
+<input id="txtVrijednost" type="text"/>
+
+<br />
+
+<label>Valute</label>
+@Html.DropDownList("Valuta", ViewBag.Valute as List<SelectListItem>)
+
+<br />
+
+<input type="button" id="btnIzracunaj" value="IZRACUNAJ" />
+
+<br />
+
+<label>Konvertovan iznos: </label>
+<div id="prikaz"></div>
+
+@section scripts{<script src="~/Scripts/App/konverter.js"></script>}

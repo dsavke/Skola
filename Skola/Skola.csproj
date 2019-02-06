@@ -137,6 +137,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KonverterController.cs" />
     <Compile Include="Controllers\OcjenaController.cs" />
     <Compile Include="Controllers\OdjeljenjeController.cs" />
     <Compile Include="Controllers\StatistikaController.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="Models\Top4Predmeta.cs" />
     <Compile Include="Models\Top5Ucenika.cs" />
     <Compile Include="Models\UcenikViewModel.cs" />
+    <Compile Include="Models\Valuta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +216,7 @@
     <Content Include="DbModels\SkolaContext.edmx.diagram">
       <DependentUpon>SkolaContext.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\App\konverter.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -293,6 +296,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Konverter\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
