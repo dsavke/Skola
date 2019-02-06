@@ -38,10 +38,12 @@ namespace Skola.Controllers
             List<Valuta> valutas = vratiListuValuta();
 
             Valuta valuta = valutas.Where(v => v.ValutaID == valutaID).FirstOrDefault();
-
             double konvertovanaVrijednost = vrijednost * valuta.KursValute;
+            var r = new { Naziv = valuta.Naziv, Vrijednost = konvertovanaVrijednost };
+
+            
     
-            return new JsonResult() { Data = konvertovanaVrijednost, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult() { Data = r, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
     }
