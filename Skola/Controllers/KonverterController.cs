@@ -33,15 +33,31 @@ namespace Skola.Controllers
             return View();
         }
 
-        public ActionResult GetConvertedValue(double vrijednost, int valutaID)
+        public ActionResult GetConvertedValue(string vrijednost, int valutaID)
         {
+
+            bool proslo = true;
+            string poruka = "";
+            double vrije = 0.0;
+
+            if (!double.TryParse(vrijednost, out vrije))
+            {
+                proslo = false;
+                poruka += "Morate unijeti vrijednost" + Environment.NewLine;
+            }else if(vrije < 0)
+            {
+                proslo = false;
+                poruka += "Morate unijeti pozitivnu vrijednost" + Environment.NewLine;
+            }
+
             List<Valuta> valutas = vratiListuValuta();
 
             Valuta valuta = valutas.Where(v => v.ValutaID == valutaID).FirstOrDefault();
 
-            double konvertovanaVrijednost = vrijednost * valuta.KursValute;
+            double konvertovanaVrijednost = vrije * valuta.KursValute;
     
-            return new JsonResult() { Data = konvertovanaVrijednost, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult() { Data = new { Success = proslo, Message = poruka, Konvertovano = 
+                            new { Vrijednost = konvertovanaVrijednost, NazivValute = valuta.Naziv } }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
     }
