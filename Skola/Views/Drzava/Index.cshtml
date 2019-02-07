@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<button type="button" class="btn btn-primary" id="btnNovaDrzava">
+    Kreiraj novu drzavu
+</button>
+
+<div class="mt-5" id="listaDrzava"></div>
+
+<div class="modal fade" id="modalPrikaz" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Kreiraj drzavu</h5>
+                <button type="button" class="close" id="btnX" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="col">
+                    <div class="row">
+                        <p style="color:red;" id="txtMessage"></p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                        <label for="txtNaziv" class="col-2">Naziv</label>
+                        <input id="txtNaziv" type="text" class="form-control col-10" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnClose" data-dismiss="modal">Zatvori</button>
+                <button id="btnSacuvaj" type="button" class="btn btn-primary">Sacuvaj</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="modalDelete">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Izbrsis</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="tijeloIzbrisi">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnIzbrisi">Izbrisi</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/App/drzave.js"></script>}

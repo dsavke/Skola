@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Skola.Models.DrzavaViewModel>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DrzavaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DrzavaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                <button class="kliknuto" data="@item.DrzavaId" value="Delete">Delete</button>
+            </td>
+
+        </tr>
+    }
+
+</table>
+<script src="~/Scripts/App/brisanjeDrzava.js">
+
+</script>
+
+
