@@ -87,10 +87,8 @@ namespace Skola.Controllers
             }
             catch (Exception ex)
             {
-
+                return new JsonResult() { Data = new { Success = false }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-
-            return new JsonResult() { Data = new { Success = false }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
 
         }
 

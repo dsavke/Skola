@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-
+    
     $.get("/Drzava/List", function (data, status) {
         $("#listaDrzava").html(data);
     });

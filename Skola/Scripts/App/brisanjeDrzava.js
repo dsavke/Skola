@@ -1,36 +1,40 @@
-﻿$(".kliknuto").click(function () {
-    $("#tijeloIzbrisi").html("Da li zelite izbrsati ovu drzavu?")
-    $("#modalDelete").modal();
-    $("#btnIzbrisi").attr("data", $(this).attr("data"));
+﻿$(document).ready(function () {
+    $(".kliknuto").click(function () {
+        $("#tijeloIzbrisi").html("Da li zelite izbrsati ovu drzavu?")
+        $("#modalDelete").modal();
+        $("#btnIzbrisi").attr("data", $(this).attr("data"));
+
+        console.log("Brisanje drzave izabrao drzavu");
+
+    });
 });
 
-$("#btnIzbrisi").click(function () {
+$(document).ready(function () {
+    $("#btnIzbrisi").click(function (event) {
+
+        event.preventDefault();
 
     var data = {
         id: $("#btnIzbrisi").attr("data")
     };
 
-    console.log(data);
-
-    var rez = false;
-
-    $.post("/Drzava/Delete", data, function (result) {
-
-        console.log(result);
-        rez = result.Success;
+        $.post("/Drzava/Delete", data, function (result) {
+            console.log(data);
         if (result.Success) {
 
-            
 
+            console.log("obrisao");
             $("#modalDelete").modal("hide");
 
-        }
-    });
+            $.get("/Drzava/List", function (drzave, status) {
+                $("#listaDrzava").html(drzave);
+            });
 
-    
-        $.get("/Drzava/List", function (drzaveRez, status) {
-            $("#listaDrzava").html(drzaveRez);
+
+        } else {
+            console.log("nije obrisalo");
+        }
         });
   
-
+    });
 });
