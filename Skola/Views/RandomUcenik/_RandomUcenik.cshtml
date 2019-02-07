@@ -1,6 +1,6 @@
 ﻿@model Skola.Models.UcenikViewModel
 
-<div class="card" style="width: 18rem;">
+<div class="card">
     <img src="~/Content/Images/profilna.jpg" class="card-img-top" alt="...">
     <div class="card-body">
 
@@ -16,17 +16,8 @@
         <p>@Model.Jmbg</p>
         <p>@Model.Pol</p>
         <p>@Model.NazivOdjeljena</p>
-        @*<a href="#" class="btn btn-primary" id="nextUcenik">Next</a>*@
     </div>
 </div>
 
-@*@Scripts.Render("~/bundles/jquery")
-<script>
-    $("nextUcenik").click(function () {
-        $.get("/RandomUcenik/GetRandomUcenik", function (data, status) {
-            $(this).html(data);
-        });
-    })
-</script>*@
 
 

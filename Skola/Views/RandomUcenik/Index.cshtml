@@ -7,12 +7,26 @@
 
 <h3>Ovo je vas danasnji random ucenik!</h3>
 
-<div class="mt-5" id="ucenik">
+<div class="row">
+    <div class="col-6">
+        <div class="mt-5 col-8" id="ucenik">
 
+        </div>
+    </div>
+    <div class="col-6">
+        <button type="button" class="btn btn-primary mt-5" id="btnPrikaziRandomUcenika" >Random ucenik</button>
+
+        <div class="modal fade bd-example-modal-sm" id="modalPrikaz" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content" id="tijeloModala">
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jquery")
     <script src="~/Scripts/App/vratiRandomUcenika.js"></script>
 }
 
