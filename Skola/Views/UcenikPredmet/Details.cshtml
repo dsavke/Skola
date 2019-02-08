@@ -1,0 +1,48 @@
+﻿@model Skola.Models.UcenikPredmetViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UcenikPredmetViewModel</h4>
+    <hr />
+    <dt>
+        @Html.DisplayNameFor(model => model.Ime)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Ime)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Prezime)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Prezime)
+    </dd>
+
+    @Html.HiddenFor(model => model.UcenikID)
+
+    <ul id="tabovi" class="nav nav-tabs" role="tablist">
+
+        @{
+            foreach (Skola.Models.PrdmetViewModel predmet in Model.Predmeti)
+            {
+                <li>
+                    <a class="nav-item nav-link" id="@predmet.Naziv" data-predmetID="@predmet.PredmetID" href="#@predmet.Naziv" role="tab" aria-selected="true">@predmet.Naziv</a>
+                </li>
+            }
+        }
+
+    </ul>
+
+    <div class="tab-content" id="nav-tabContent">
+    </div>
+
+    @section scripts{
+        <script src="~/Scripts/App/ocjenaZaPredmet.js"></script>
+        }

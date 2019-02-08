@@ -142,6 +142,7 @@
     <Compile Include="Controllers\OdjeljenjeController.cs" />
     <Compile Include="Controllers\StatistikaController.cs" />
     <Compile Include="Controllers\UcenikController.cs" />
+    <Compile Include="Controllers\UcenikPredmetController.cs" />
     <Compile Include="DbModels\Drzava.cs">
       <DependentUpon>SkolaContext.tt</DependentUpon>
     </Compile>
@@ -183,15 +184,18 @@
     </Compile>
     <Compile Include="HelperClass\DataHelper.cs" />
     <Compile Include="Models\DrzavaViewModel.cs" />
+    <Compile Include="Models\OcjenaPredmetViewModel.cs" />
     <Compile Include="Models\OcjenaViewModel.cs" />
     <Compile Include="Models\OdjeljenjeProsjekViewModel.cs" />
     <Compile Include="Models\OdjeljenjeViewModel.cs" />
     <Compile Include="Models\OdlicnihOdjeljenje.cs" />
+    <Compile Include="Models\PrdmetViewModel.cs" />
     <Compile Include="Models\StatistikaViewModel.cs" />
     <Compile Include="Models\Top3Nastavnika.cs" />
     <Compile Include="Models\Top3Ucenika.cs" />
     <Compile Include="Models\Top4Predmeta.cs" />
     <Compile Include="Models\Top5Ucenika.cs" />
+    <Compile Include="Models\UcenikPredmetViewModel.cs" />
     <Compile Include="Models\UcenikViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -224,6 +228,7 @@
     </Content>
     <Content Include="Scripts\App\brisanjeDrzava.js" />
     <Content Include="Scripts\App\drzave.js" />
+    <Content Include="Scripts\App\ocjenaZaPredmet.js" />
     <Content Include="Scripts\App\vratiGradove.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -306,6 +311,9 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Drzava\Index.cshtml" />
     <Content Include="Views\Drzava\List.cshtml" />
+    <Content Include="Views\UcenikPredmet\Index.cshtml" />
+    <Content Include="Views\UcenikPredmet\Details.cshtml" />
+    <Content Include="Views\UcenikPredmet\_OcjenePredmet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

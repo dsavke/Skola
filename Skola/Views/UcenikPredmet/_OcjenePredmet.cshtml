@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Skola.Models.OcjenaPredmetViewModel>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OcjenaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vrijednost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatumOcjene)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipOcjene)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OcjenaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vrijednost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatumOcjene)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipOcjene)
+        </td>
+    </tr>
+}
+
+</table>
