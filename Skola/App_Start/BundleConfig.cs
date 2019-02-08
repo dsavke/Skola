@@ -25,6 +25,16 @@ namespace Skola
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/jtable-scripts").Include(
+                     "~/Scripts/jquery-ui-1.12.1.js",
+                     "~/Scripts/jtable/jquery.jtable.js"
+                   ));
+
+            bundles.Add(new StyleBundle("~/Content/jtable-css").Include(
+                  "~/Content/themes/base/jquery-ui.min.css",
+                  "~/Scripts/jtable/themes/metro/blue/jtable.min.css"));
+
         }
     }
 }
